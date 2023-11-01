@@ -1,0 +1,25 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: demo-app-content
+  labels:
+    app: demo-app
+data:
+  index.html: |
+    <!doctype html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Demo App</title>
+        <link rel="stylesheet" href="main.css">
+      </head>
+      <body>
+        <h1>Hello from my ConfigMap!</h1>
+      </body>
+    </html>
+  main.css: |
+    body {
+      background-color: rgb(224,224,224);
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-size: 100%;
+    }

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: echoserver
+  labels:
+    app: echoserver
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: echoserver
+  template:
+    metadata:
+      labels:
+        app: echoserver
+    spec:
+      containers:
+      - name: echoserver
+        image: selaworkshops/echoserver:1.4
+        ports:
+        - containerPort: 8080
+        

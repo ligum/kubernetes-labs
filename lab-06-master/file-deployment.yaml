@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: demo-app
+  name: demo-app
+spec:
+  selector:
+    matchLabels:
+      app: demo-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: demo-app
+      name: demo-app
+    spec:
+      containers:
+        - name: demo-app
+          image: selaworkshops/nginx:alpine
+          volumeMounts:
+            - readOnly: true
+              mountPath: /usr/share/nginx/html
+              name: html-files
+      volumes:
+        - name: html-files
+          configMap:
+            name: demo-app-content

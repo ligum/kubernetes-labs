@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cli-test
+spec:
+  containers:
+  - name: test-container
+    image: k8s.gcr.io/busybox
+    command: [ "/bin/sh", "-c", "env" ]
+    env:
+    - name: LANGUAGE
+      valueFrom:
+        configMapKeyRef:
+          name: language
+          key: LANGUAGE
+    - name: API_KEY
+      valueFrom:
+        secretKeyRef:
+          name: apikey
+          key: API_KEY
+  restartPolicy: Never
